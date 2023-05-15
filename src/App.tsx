@@ -13,7 +13,6 @@ const App = () => {
             <Route path="/" element={<HomePage />}></Route>
           </Routes>
         </main>
-
         <Footer />
       </BrowserRouter>
     </div>
