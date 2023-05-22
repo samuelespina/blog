@@ -6,3 +6,11 @@ export const queryArticles = `query{
     }
   }
 }`;
+
+export const queryCategories = `query{
+  categories {
+    nodes {
+      name
+    }
+  }
+}`;

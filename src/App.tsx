@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar, Footer } from "./components";
-import { HomePage } from "./pages";
+import { HomePage, Article, Search, Category } from "./pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
@@ -10,7 +10,10 @@ const App = () => {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/article/:id" element={<Article />} />
+            <Route path="/search/:id" element={<Search />}></Route>
+            <Route path="/categoria/:id" element={<Category />}></Route>
           </Routes>
         </main>
         <Footer />
@@ -20,3 +23,5 @@ const App = () => {
 };
 
 export default App;
+
+// localhost:8080/category/:category/id/:id

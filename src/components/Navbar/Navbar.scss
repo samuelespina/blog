@@ -1,0 +1,131 @@
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5rem;
+  height: 100vh;
+  background-color: rgb(70, 70, 255);
+  color: white;
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .logo {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .category {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      .single-category-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .category-icon,
+        .home {
+          font-size: 1.5rem;
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            scale: 1.1;
+          }
+        }
+        .bubble {
+          position: absolute;
+          width: 0;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          background-color: white;
+          z-index: -1;
+          transition: all 0.4s ease-in-out;
+        }
+        &.active {
+          .category-icon,
+          .home {
+            color: black;
+          }
+          .bubble {
+            width: 2.7rem;
+          }
+        }
+        &:hover {
+          .tool-tip {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .search-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      .icon {
+        font-size: 1.3rem;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          scale: 1.1;
+        }
+      }
+      .input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 5.5rem;
+        .input-field {
+          display: none;
+        }
+        .submit {
+          display: none;
+          cursor: pointer;
+        }
+
+        &.active {
+          .input-field {
+            display: block;
+          }
+          .submit {
+            display: block;
+          }
+        }
+      }
+    }
+    .profile-img-wrapper {
+      width: 2.2rem;
+      aspect-ratio: 1/1;
+      background-color: black;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      .profile-img {
+      }
+    }
+  }
+}
+
+@keyframes iconAnimation {
+  0% {
+  }
+  100% {
+    width: 2.5rem;
+  }
+}

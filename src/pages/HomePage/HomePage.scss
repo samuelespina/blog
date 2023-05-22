@@ -1,8 +1,14 @@
 .homepage {
-  .content {
-    p {
-      border: 1px solid red;
-      margin: 10rem;
+  margin-top: 10rem;
+  .article {
+    margin-bottom: 7rem;
+    .title {
+    }
+    .content {
+      p {
+        border: 1px solid red;
+        margin: 1rem;
+      }
     }
   }
 }

@@ -30,11 +30,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: "./src/images", to: "./images" },
-    //     { from: "./src/fonts", to: "./fonts" },
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/images", to: "./images" },
+        // { from: "./src/fonts", to: "./fonts" },
+      ],
+    }),
   ],
 };

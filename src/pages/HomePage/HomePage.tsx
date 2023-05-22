@@ -4,11 +4,18 @@ import Marquee from "react-fast-marquee";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { queryArticles, interfaceArticles } from "../../utils";
+import { useNavigate } from "react-router-dom";
+import {
+  queryArticles,
+  queryCategories,
+  interfaceArticles,
+  interfaceCategoriesNames,
+} from "../../utils";
 
 const HomePage = () => {
   const [queryResultArticlesDatas, setQueryResultArticlesDatas] =
     useState<interfaceArticles | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios({
@@ -18,7 +25,6 @@ const HomePage = () => {
         query: queryArticles,
       },
     }).then((res) => {
-      console.log(res);
       setQueryResultArticlesDatas(res.data);
     });
   }, []);
@@ -31,7 +37,12 @@ const HomePage = () => {
       i--
     ) {
       resultArticles.push(
-        <section className="articles">
+        <section
+          onClick={() => {
+            navigate("/article/" + i);
+          }}
+          className="article"
+        >
           <article>
             <div className="title">
               <h1>{queryResultArticlesDatas.data.posts.nodes[i].title}</h1>
