@@ -43,7 +43,7 @@ const Article = () => {
     );
   };
   return (
-    <div className="article">
+    <div className="articles">
       {queryResultArticlesDatas ? renderArticlePage() : ""};
     </div>
   );

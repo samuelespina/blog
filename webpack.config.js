@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
       { test: /\.tsx?$/, use: "ts-loader", exclude: /node_modules/ },
       {
-        test: /\.(s(a|c)ss)$/,
+        test: /\.((sa|sc|c)ss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
@@ -30,11 +30,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new CopyPlugin({
-      patterns: [
-        { from: "./src/images", to: "./images" },
-        // { from: "./src/fonts", to: "./fonts" },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: "./src/images", to: "./images" },
+    //     { from: "./src/fonts", to: "./fonts" },
+    //   ],
+    // }),
   ],
 };

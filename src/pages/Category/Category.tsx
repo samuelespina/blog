@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
-import { interfaceCategoryArticles } from "../../utils";
+import {
+  interfaceCategoryArticles,
+  interfaceQueryImg,
+  queryImg,
+} from "../../utils";
 
 const Category = () => {
   const [categoryArticles, setCategoryArticles] =
@@ -16,6 +20,13 @@ const Category = () => {
       data: {
         query: `query{
             posts(where: {search:"${id}"}) {
+              nodes{
+                featuredImage{
+                  node{
+                    sourceUrl
+                  }
+                }
+              }
               edges {
                 node {
                   title
@@ -36,6 +47,15 @@ const Category = () => {
     for (let i = categoryArticles.data.posts.edges.length - 1; i > -1; i--) {
       result.push(
         <section className="article">
+          <article>
+            <img
+              src={
+                categoryArticles.data.posts.nodes[i].featuredImage.node
+                  .sourceUrl
+              }
+              alt=""
+            />
+          </article>
           <article>
             <div className="title">
               <h1>

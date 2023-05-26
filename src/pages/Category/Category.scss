@@ -1,5 +1,8 @@
 .category-wrapper {
-  .categories {
-    margin-top: 10rem;
+  overflow-y: auto;
+  margin-left: 10rem;
+  margin-top: 3rem;
+  .category {
+    border: 1px solid red;
   }
 }

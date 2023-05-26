@@ -15,8 +15,10 @@ import {
 import ToolTip from "../ToolTip";
 
 const Navbar = () => {
-  const [queryResultCategories, setQueryResultCategories] =
-    useState<interfaceCategoriesNames | null>(null);
+  const [
+    queryResultCategories,
+    setQueryResultCategories,
+  ] = useState<interfaceCategoriesNames | null>(null);
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState<string>("");
   const icons = [
@@ -50,6 +52,29 @@ const Navbar = () => {
     "Oceania",
   ];
 
+  const [isOpenOne, setIsOpenOne] = useState<boolean>(false);
+  const [isOpenTwo, setIsOpenTwo] = useState<boolean>(false);
+  const [isOpenThree, setIsOpenThree] = useState<boolean>(false);
+  const [isOpenFour, setIsOpenFour] = useState<boolean>(false);
+  const [isOpenFive, setIsOpenFive] = useState<boolean>(false);
+  const [isOpenSix, setIsOpenSix] = useState<boolean>(false);
+  const [isOpenLogo, setIsOpenLogo] = useState<boolean>(false);
+
+  const isOpenSetArray = [
+    setIsOpenTwo,
+    setIsOpenThree,
+    setIsOpenFour,
+    setIsOpenFive,
+    setIsOpenSix,
+  ];
+  const isOpenArray = [
+    isOpenTwo,
+    isOpenThree,
+    isOpenFour,
+    isOpenFive,
+    isOpenSix,
+  ];
+
   useEffect(() => {
     axios({
       method: "post",
@@ -72,8 +97,13 @@ const Navbar = () => {
     ) {
       resultCategories.push(
         <div className="single-category-container" ref={iconsRef[i]}>
-          <ToolTip text={toolTipText[i]} />
           <FontAwesomeIcon
+            onMouseEnter={() => {
+              isOpenSetArray[i](true);
+            }}
+            onMouseLeave={() => {
+              isOpenSetArray[i](false);
+            }}
             className="category-icon"
             onClick={() => {
               navigate(
@@ -87,6 +117,7 @@ const Navbar = () => {
             }}
             icon={icons[i]}
           />
+          <ToolTip text={toolTipText[i]} isOpen={isOpenArray[i]} />
           <div className="bubble"></div>
         </div>
       );
@@ -97,11 +128,16 @@ const Navbar = () => {
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        <p className="logo">TraveLLy</p>
+        <p className="logo">Travelly</p>
         <div className="category">
           <div className="single-category-container" ref={iconAnimation}>
-            <ToolTip text="Home" />
             <FontAwesomeIcon
+              onMouseEnter={() => {
+                setIsOpenOne(true);
+              }}
+              onMouseLeave={() => {
+                setIsOpenOne(false);
+              }}
               className="home"
               icon={faHouse}
               onClick={() => {
@@ -112,7 +148,7 @@ const Navbar = () => {
                 setSwitchIconAnimation(iconAnimation);
               }}
             />
-
+            <ToolTip text="Home" isOpen={isOpenOne} />
             <div className="bubble"></div>
           </div>
 
@@ -138,16 +174,29 @@ const Navbar = () => {
             <input
               className="submit"
               type="submit"
-              value="submit"
+              value="cerca"
               onClick={() => navigate("/search/" + inputValue)}
             />
           </div>
         </div>
 
-        <div className="profile-img-wrapper">
-          <img className="profile-img" src="" alt="" />
-        </div>
-        {/* inizialmente dente di ingrandimento, onclick si apre la sezione di input */}
+        <a
+          target="_blank"
+          href="https://novadgt.netlify.app/"
+          className="portfolio-wrapper"
+        >
+          <p
+            onMouseEnter={() => {
+              setIsOpenLogo(true);
+            }}
+            onMouseLeave={() => {
+              setIsOpenLogo(false);
+            }}
+            className="portfolio-name"
+          >
+            N
+          </p>
+        </a>
       </nav>
     </header>
   );

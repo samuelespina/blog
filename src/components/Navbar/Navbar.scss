@@ -6,6 +6,9 @@
   height: 100vh;
   background-color: rgb(70, 70, 255);
   color: white;
+  border-radius: 0 0.5rem 0.5rem 0;
+  -webkit-box-shadow: 0px 0px 20px -6px #000000;
+  box-shadow: 0px 0px 20px -6px #000000;
 
   .navbar {
     display: flex;
@@ -17,9 +20,10 @@
 
     .logo {
       margin-top: 1rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
-      color: white;
+      color: black;
+      cursor: pointer;
     }
 
     .category {
@@ -65,11 +69,6 @@
             width: 2.7rem;
           }
         }
-        &:hover {
-          .tool-tip {
-            opacity: 1;
-          }
-        }
       }
     }
 
@@ -84,6 +83,7 @@
         transition: all 0.3s ease-in-out;
         &:hover {
           scale: 1.1;
+          color: black;
         }
       }
       .input {
@@ -110,22 +110,34 @@
         }
       }
     }
-    .profile-img-wrapper {
-      width: 2.2rem;
+    .portfolio-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 2.5rem;
       aspect-ratio: 1/1;
       background-color: black;
       border-radius: 50%;
-      margin-bottom: 1.5rem;
-      .profile-img {
+      margin-bottom: 1.3rem;
+      cursor: pointer;
+      overflow: hidden;
+      text-decoration: none;
+
+      .portfolio-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: #121fcf;
+        background: linear-gradient(to right, #121fcf 0%, #cf1512 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover {
+        .portfolio-name {
+          scale: 1.1;
+        }
       }
     }
-  }
-}
-
-@keyframes iconAnimation {
-  0% {
-  }
-  100% {
-    width: 2.5rem;
   }
 }

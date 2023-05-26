@@ -1,13 +1,114 @@
 .homepage {
-  margin-top: 10rem;
-  .article {
-    margin-bottom: 7rem;
-    .title {
-    }
-    .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5.5rem;
+  line-height: 1.7rem;
+  overflow-y: hidden;
+
+  .homepage-part-one,
+  .homepage-part-two,
+  .homepage-part-three {
+    overflow-y: scroll;
+    scrollbar-color: rgb(241, 241, 241) rgb(241, 241, 241);
+    height: 100vh;
+
+    .page-title {
+      z-index: 2;
+      position: sticky;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 3rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      background-color: white;
+      -webkit-box-shadow: 0px 0px 16px -6px #000000;
+      box-shadow: 0px 0px 16px -6px #000000;
+
       p {
-        border: 1px solid red;
-        margin: 1rem;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .homepage-part-one {
+    width: 40%;
+    .article {
+      margin: 2rem 0 6rem 0.5rem;
+
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+      .title {
+      }
+      .content {
+        img {
+          position: absolute;
+          top: -8rem;
+        }
+        p {
+        }
+      }
+    }
+  }
+  .homepage-part-two {
+    width: 35%;
+    .description-homepage-two-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 3rem;
+      .img-hp2-wrapper {
+        margin-top: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 6rem;
+        width: 94%;
+        -webkit-box-shadow: 0px 0px 20px -6px #000000;
+        box-shadow: 0px 0px 20px -6px #000000;
+        .vivere-viaggiando-img {
+          scale: 2;
+        }
+      }
+      .img-hp2-wrapper-two {
+        .vivere-viaggiando-img-two {
+        }
+      }
+      .description-homepage-two {
+        width: 80%;
+        border-radius: 1rem;
+        background-color: white;
+        font-size: 1rem;
+        padding: 1rem;
+        position: relative;
+        top: -1rem;
+        -webkit-box-shadow: 0px 0px 20px -6px #000000;
+        box-shadow: 0px 0px 20px -6px #000000;
+        .description-title {
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .homepage-part-three {
+    width: 25%;
+    .article {
+      margin: 2rem 0 6rem 0.5rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+      .title {
+      }
+      .content {
+        p {
+        }
       }
     }
   }

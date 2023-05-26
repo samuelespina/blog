@@ -14,3 +14,15 @@ export const queryCategories = `query{
     }
   }
 }`;
+
+export const queryImg = `query{
+  posts {
+    nodes {
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}`;
