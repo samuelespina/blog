@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   margin-left: 5.5rem;
-  line-height: 1.7rem;
+  line-height: 1.8rem;
   overflow-y: hidden;
 
   .homepage-part-one,
@@ -55,59 +55,79 @@
       }
     }
   }
+
   .homepage-part-two {
     width: 35%;
-    .description-homepage-two-wrapper {
+    .description-homepage-wrapper {
+      margin-bottom: 4rem;
+      .iframe {
+        z-index: 0;
+        border: none;
+        border-radius: 1rem;
+        position: relative;
+        top: -0.5rem;
+      }
+    }
+  }
+  .homepage-part-three {
+    width: 25%;
+    .description-homepage-wrapper {
+      .description-homepage {
+        text-align: center;
+      }
+    }
+  }
+
+  .homepage-part-two,
+  .homepage-part-three {
+    .description-homepage-wrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 3rem;
-      .img-hp2-wrapper {
-        margin-top: 2rem;
-        border-radius: 1rem;
+
+      &:first-of-type {
+        margin-top: 1rem;
+      }
+
+      .img-wrapper-one {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         overflow: hidden;
-        height: 6rem;
-        width: 94%;
-        -webkit-box-shadow: 0px 0px 20px -6px #000000;
-        box-shadow: 0px 0px 20px -6px #000000;
-        .vivere-viaggiando-img {
-          scale: 2;
-        }
-      }
-      .img-hp2-wrapper-two {
-        .vivere-viaggiando-img-two {
-        }
-      }
-      .description-homepage-two {
-        width: 80%;
         border-radius: 1rem;
+        margin-top: 1rem;
+        width: 95%;
+
+        .img-one {
+        }
+      }
+      .img-wrapper-two {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 2rem;
+        width: 95%;
+        position: relative;
+        top: 1rem;
+        .img-two {
+        }
+      }
+
+      .description-homepage {
+        width: 80%;
+        border-radius: 2rem;
         background-color: white;
         font-size: 1rem;
         padding: 1rem;
         position: relative;
         top: -1rem;
-        -webkit-box-shadow: 0px 0px 20px -6px #000000;
-        box-shadow: 0px 0px 20px -6px #000000;
+        -webkit-box-shadow: 0px 0px 10px -6px #000000;
+        box-shadow: 0px 0px 10px -6px #000000;
         .description-title {
           text-align: center;
           margin-bottom: 1.5rem;
-        }
-      }
-    }
-  }
-
-  .homepage-part-three {
-    width: 25%;
-    .article {
-      margin: 2rem 0 6rem 0.5rem;
-      &:last-child {
-        margin-bottom: 2rem;
-      }
-      .title {
-      }
-      .content {
-        p {
         }
       }
     }

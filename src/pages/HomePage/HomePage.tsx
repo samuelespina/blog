@@ -24,6 +24,7 @@ const HomePage = () => {
     setQueryResultImg,
   ] = useState<interfaceQueryImg | null>(null);
   const navigate = useNavigate();
+  const iframe = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     axios({
@@ -114,11 +115,15 @@ const HomePage = () => {
           <p>Vivere in viaggio</p>
         </div>
 
-        <section className="description-homepage-two-wrapper">
-          <div className="img-hp2-wrapper">
-            <img className="vivere-viaggiando-img" alt="" />
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-one">
+            <img
+              className="img-one"
+              src="./images/DIVENTA-UN-TRAVEL-BLOGGER-1920X300-WEB.jpg"
+              alt=""
+            />
           </div>
-          <div className="description-homepage-two">
+          <div className="description-homepage">
             {" "}
             <h1 className="description-title">
               Guadagnare con un blog di viaggi
@@ -142,25 +147,74 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="description-homepage-two-wrapper">
-          <div className="img-hp2-wrapper-two">
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
             <img
-              className="vivere-viaggiando-img-two"
-              src="https://www.miprendoemiportovia.it/wp-content/uploads/2020/09/travel-blogger-school.jpg"
+              className="img-two"
+              src="./images/travel-blogger-school.jpg"
               alt=""
             />
           </div>
-          <div className="description-homepage-two">
+          <div className="description-homepage">
             <h1 className="description-title"> Travel blogger school</h1>
             <p>
               Il primo percorso step by step che ti insegnerà come vivere
               viaggiando, diventare un travel blogger di successo e guadagnare
-              con un blog di viaggi. In una frase: ti mostrerà come vivere la
-              vita dei tuoi sogni. La Travel Blogger School è un (per)corso a
-              pagamento, strutturato in 4 step che comprendono più di 50 lezioni
-              video, 4 bonus, materiali di lavoro ed esercizi nei quali ti
-              sveliamo come siamo riusciti a creare un brand online di successo
-              grazie al nostro blog di viaggi.
+              con un blog di viaggi.
+            </p>
+            <p>
+              {" "}
+              In una frase: ti mostrerà come vivere la vita dei tuoi sogni.
+            </p>
+            <p>
+              {" "}
+              La Travel Blogger School è un (per)corso a pagamento, strutturato
+              in 4 step che comprendono più di 50 lezioni video, 4 bonus,
+              materiali di lavoro ed esercizi nei quali ti sveliamo come siamo
+              riusciti a creare un brand online di successo grazie al nostro
+              blog di viaggi.
+            </p>
+          </div>
+        </section>
+        <section className="description-homepage-wrapper">
+          <iframe
+            className="iframe"
+            width="400"
+            height="250"
+            src="https://www.youtube.com/embed/pnGXNlO_2tU"
+            title="COME DIVENTARE TRAVEL BLOGGER: la nostra storia (con sorpresa!)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          ></iframe>
+
+          <div className="description-homepage">
+            <h1 className="description-title"> Vivere Viaggiando</h1>
+            <p>
+              È un mini-corso, completamente gratuito, per muovere i primi passi
+              nel mondo del travel blogging.
+            </p>
+            <p>
+              Migliaia di persone sognano di vivere viaggiando, secondo le
+              proprie condizioni e i propri termini.
+            </p>
+            <p>
+              Sognano di lasciare un lavoro che non li rappresenta e di vivere
+              senza orari di ufficio imposti da altri.
+            </p>
+            <p>
+              Sei un viaggiatore e per questo sei abituato ad essere uno che
+              agisce, non solamente un sognatore.
+            </p>
+            <p>
+              Sai che i sogni dal cassetto vanno tirati fuori perché altrimenti
+              fanno la muffa.
+            </p>
+            <p>
+              In questo mini-corso scoprirai i passi fondamentali per creare un
+              blog di viaggi e gettare le basi per vivere di questo.
+            </p>
+            <p>
+              Fai il primo passo, iscriviti al mini corso gratuito e insegui il
+              tuo sogno.
             </p>
           </div>
         </section>
@@ -169,7 +223,106 @@ const HomePage = () => {
         <div className="page-title">
           <p>Viaggi più popolari</p>
         </div>
-        {queryResultArticlesDatas && queryResultImg ? renderArticles() : ""}
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/quando-andare-zanzibar-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">Quando andiamo a Zanzibar </h1>
+            <p>Africa</p>
+            <p> 26 gennaio 2023</p>
+          </div>
+        </section>
+
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/key-west-immagine-copertina-2-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">
+              Guida di Key West Florida: dove gli USA diventano Caraibi!
+            </h1>
+            <p>Americhe </p>
+            <p>10 gennaio 2022</p>
+          </div>
+        </section>
+
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/viaggiare-sicuri-indonesia-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">
+              Indonesia: come viaggiare sicuri
+            </h1>
+            <p>Asia </p>
+            <p>20 Gennaio 2023 </p>
+          </div>
+        </section>
+
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/On-the-road-in-Europa-Copertina-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">
+              3 viaggi da fare on the road in Europa
+            </h1>
+            <p>Europa</p>
+            <p>30 Marzo 2023</p>
+          </div>
+        </section>
+
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/Val-dEga-Copertina-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">
+              Weekend in Val d’Ega: vacanza in montagna perfetta anche senza
+              sciare!
+            </h1>
+            <p>Italia</p>
+            <p>24 Febbraio 2023</p>
+          </div>
+        </section>
+
+        <section className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/copertina-1-300x200.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h1 className="description-title">
+              Viaggio in Australia: 3 hotel di lusso da Perth alla Clare Valley
+            </h1>
+            <p>Oceania</p>
+            <p>3 Dicembre 2019</p>
+          </div>
+        </section>
       </div>
     </div>
   );
