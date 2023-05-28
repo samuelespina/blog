@@ -91,26 +91,57 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <div className="homepage-part-one">
+      <section className="homepage-part-one">
         <div className="page-title">
           <p>Chi siamo?</p>
         </div>
-        <h1>Travelly</h1>
-        <p>Dove vuoi, quando vuoi</p>
-        <Carousel>
-          <div>
-            <img src="" />
-            <p className="legend">Legend 1</p>
-          </div>
-          <div>
-            <p className="legend">Legend 2</p>
-          </div>
-          <div>
-            <p className="legend">Legend 3</p>
-          </div>
-        </Carousel>
-      </div>
-      <div className="homepage-part-two">
+        <section className="homepage-part-one-content">
+          <h1 className="site-name">Travelly</h1>
+          <p>
+            Travelly nasce con l’idea di coniugare un modo di viaggiare in
+            maniera responsabile con l'esigenza di realizzare un viaggio su
+            misura per le esigenze delle singole persone...
+          </p>
+
+          <p>
+            <strong>Dove vuoi, quando vuoi!</strong>
+          </p>
+          <Carousel
+            className="carousel"
+            autoPlay={true}
+            infiniteLoop={true}
+            showStatus={false}
+            showThumbs={false}
+          >
+            <div>
+              <img src="./images/gettyimages-1161389146-612x612.jpg" />
+            </div>
+            <div>
+              <img src="./images/gettyimages-1226977845-612x612.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./images/gettyimages-1254092294-612x612.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./images/gettyimages-906445624-612x612.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./images/gettyimages-1284745836-612x612.jpg" alt="" />
+            </div>
+            <div>
+              <img src="./images/gettyimages-1330224115-612x612.jpg" alt="" />
+            </div>
+          </Carousel>
+          <h2 className="destination-title">Destinazioni disponibili</h2>
+          <img src="./images/mappa-miprendoemiportovia.png" alt="" />
+          <p className="destinations-description">
+            Per saperne di più clicca sulle icone{" "}
+            <strong>qui a sinistra!</strong>{" "}
+          </p>
+        </section>
+      </section>
+
+      <section className="homepage-part-two">
         <div className="page-title">
           <p>Vivere in viaggio</p>
         </div>
@@ -179,8 +210,6 @@ const HomePage = () => {
         <section className="description-homepage-wrapper">
           <iframe
             className="iframe"
-            width="400"
-            height="250"
             src="https://www.youtube.com/embed/pnGXNlO_2tU"
             title="COME DIVENTARE TRAVEL BLOGGER: la nostra storia (con sorpresa!)"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -218,8 +247,8 @@ const HomePage = () => {
             </p>
           </div>
         </section>
-      </div>
-      <div className="homepage-part-three">
+      </section>
+      <section className="homepage-part-three">
         <div className="page-title">
           <p>Viaggi più popolari</p>
         </div>
@@ -323,7 +352,7 @@ const HomePage = () => {
             <p>3 Dicembre 2019</p>
           </div>
         </section>
-      </div>
+      </section>
     </div>
   );
 };
