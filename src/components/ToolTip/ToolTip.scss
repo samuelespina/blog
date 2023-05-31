@@ -17,6 +17,7 @@
   text-align: center;
   width: fit-content;
   padding: 0.3rem 0.8rem;
+  z-index: 100;
 
   &.active {
     opacity: 1;

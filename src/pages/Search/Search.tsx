@@ -17,12 +17,18 @@ const Search = () => {
       url: "http://blog-data.local/graphql",
       data: {
         query: `query{
-          posts(first: 10, after: null, where: {search:"${id}"}) {
+          posts(where: {search:"${id}"}) {
+            nodes {
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+            }
             edges {
               node {
-                id
                 title
-                excerpt
+                content
               }
             }
           }
@@ -39,18 +45,23 @@ const Search = () => {
     for (let i = searchResult.data.posts.edges.length - 1; i > -1; i--) {
       result.push(
         <section className="article">
-          <article>
-            <div className="title">
-              <h1>
-                {JSON.stringify(searchResult.data.posts.edges[i].node.title)}
-              </h1>
-            </div>
-          </article>
-          <article>
+          <div className="article-img-wrapper">
+            <img
+              className="article-img"
+              src={
+                searchResult.data.posts.nodes[i].featuredImage.node.sourceUrl
+              }
+              alt=""
+            />
+          </div>
+          <article className="article-description">
+            <h1 className="title">
+              {JSON.stringify(searchResult.data.posts.edges[i].node.title)}
+            </h1>
             <div
               className="content"
               dangerouslySetInnerHTML={{
-                __html: searchResult.data.posts.edges[i].node.excerpt,
+                __html: searchResult.data.posts.edges[i].node.content,
               }}
             ></div>
           </article>
@@ -61,10 +72,7 @@ const Search = () => {
   };
 
   return (
-    <div className="search">
-      {searchResult ? renderSearch() : ""}
-      <p>{id}</p>
-    </div>
+    <div className="search-wrapper">{searchResult ? renderSearch() : ""}</div>
   );
 };
 

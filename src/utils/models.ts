@@ -34,11 +34,17 @@ export interface interfaceCategoriesNames {
 export interface interfaceSearch {
   data: {
     posts: {
+      nodes: {
+        featuredImage: {
+          node: {
+            sourceUrl: string;
+          };
+        };
+      }[];
       edges: {
         node: {
-          id: string;
           title: string;
-          excerpt: string;
+          content: string;
         };
       }[];
     };

@@ -87,6 +87,16 @@ const Navbar = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (switchInput.current) {
+      document.addEventListener("mousedown", (e) => {
+        if (!switchInput.current.contains(e.target as any)) {
+          switchInput.current.classList.remove("active");
+        }
+      });
+    }
+  }, [switchInput.current]);
+
   const renderCategories = () => {
     const resultCategories = [];
 
@@ -169,6 +179,9 @@ const Navbar = () => {
               placeholder="cosa vuoi cercare?"
               onChange={(e) => {
                 setInputValue(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                e.keyCode == 13 && navigate("/search/" + inputValue);
               }}
             />
             <input

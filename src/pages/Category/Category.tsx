@@ -8,8 +8,10 @@ import {
 } from "../../utils";
 
 const Category = () => {
-  const [categoryArticles, setCategoryArticles] =
-    useState<interfaceCategoryArticles | null>(null);
+  const [
+    categoryArticles,
+    setCategoryArticles,
+  ] = useState<interfaceCategoryArticles | null>(null);
   const { id } = useParams();
   const pathname = useLocation();
 
@@ -19,7 +21,7 @@ const Category = () => {
       url: "http://blog-data.local/graphql",
       data: {
         query: `query{
-            posts(where: {search:"${id}"}) {
+            posts(where: {categoryName:"${id}"}) {
               nodes{
                 featuredImage{
                   node{
@@ -48,24 +50,21 @@ const Category = () => {
       result.push(
         <section className="article">
           <article>
-            <img
-              src={
-                categoryArticles.data.posts.nodes[i].featuredImage.node
-                  .sourceUrl
-              }
-              alt=""
-            />
-          </article>
-          <article>
-            <div className="title">
-              <h1>
-                {JSON.stringify(
-                  categoryArticles.data.posts.edges[i].node.title
-                )}
-              </h1>
+            <div className="article-img-wrapper">
+              <img
+                className="article-img"
+                src={
+                  categoryArticles.data.posts.nodes[i].featuredImage.node
+                    .sourceUrl
+                }
+                alt=""
+              />
             </div>
           </article>
-          <article>
+          <article className="article-description">
+            <h1 className="title">
+              {JSON.stringify(categoryArticles.data.posts.edges[i].node.title)}
+            </h1>
             <div
               className="content"
               dangerouslySetInnerHTML={{
@@ -81,10 +80,10 @@ const Category = () => {
   };
 
   return (
-    <div className="category-wrapper">
-      <p className="category">
+    <div className="article-page-container">
+      <div className="article-wrapper">
         {categoryArticles ? renderCategoryArticles() : ""}
-      </p>
+      </div>
     </div>
   );
 };

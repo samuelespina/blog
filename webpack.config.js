@@ -8,9 +8,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/public/build"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   devtool: "inline-source-map",
-  devServer: { static: "./public/build/" },
+  devServer: {
+    static: "./public/build/",
+    historyApiFallback: true,
+    // contentBase: __dirname + "/public",
+  },
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
@@ -29,6 +34,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      // filename: "./index.html",
     }),
     new CopyPlugin({
       patterns: [

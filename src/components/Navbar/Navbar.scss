@@ -92,6 +92,7 @@
         align-items: center;
         position: absolute;
         left: 5.5rem;
+        z-index: 100000;
         .input-field {
           display: none;
         }
