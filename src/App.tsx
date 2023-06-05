@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Footer } from "./components";
 import { HomePage, Article, Search, Category } from "./pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -23,5 +23,3 @@ const App = () => {
 };
 
 export default App;
-
-// localhost:8080/category/:category/id/:id

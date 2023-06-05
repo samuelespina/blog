@@ -59,6 +59,9 @@ const Navbar = () => {
   const [isOpenFive, setIsOpenFive] = useState<boolean>(false);
   const [isOpenSix, setIsOpenSix] = useState<boolean>(false);
   const [isOpenLogo, setIsOpenLogo] = useState<boolean>(false);
+  const [darkModeToolTip, setDarkModeToolTip] = useState<boolean>(false);
+
+  const [darkModeState, setDarkModeState] = useState<string>("off");
 
   const isOpenSetArray = [
     setIsOpenTwo,
@@ -75,10 +78,12 @@ const Navbar = () => {
     isOpenSix,
   ];
 
+  const darkMode = useRef<HTMLInputElement | null>(null);
+
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://blog-data.local/graphql",
+      url: "https://dev-blog-wp.pantheonsite.io/graphql",
       data: {
         query: queryCategories,
       },
@@ -139,6 +144,31 @@ const Navbar = () => {
     <header className="navbar-wrapper">
       <nav className="navbar">
         <p className="logo">Travelly</p>
+
+        <div className="darkmode-switch-button-wrapper">
+          <ToolTip
+            text={"Dark mode " + darkModeState}
+            isOpen={darkModeToolTip}
+          />
+          <div
+            className="darkmode-switch-button"
+            onMouseEnter={() => {
+              setDarkModeToolTip(true);
+            }}
+            onMouseLeave={() => {
+              setDarkModeToolTip(false);
+            }}
+            onClick={() => {
+              document.body.classList.toggle("active");
+              darkMode.current.classList.toggle("active");
+              darkMode.current.classList.contains("active")
+                ? setDarkModeState("on")
+                : setDarkModeState("off");
+            }}
+          >
+            <div ref={darkMode} className="switch-flag"></div>
+          </div>
+        </div>
         <div className="category">
           <div className="single-category-container" ref={iconAnimation}>
             <FontAwesomeIcon
@@ -193,23 +223,22 @@ const Navbar = () => {
           </div>
         </div>
 
-        <a
-          target="_blank"
-          href="https://novadgt.netlify.app/"
-          className="portfolio-wrapper"
-        >
-          <p
+        <div className="portfolio-wrapper">
+          <ToolTip text="NovaDGT" isOpen={isOpenLogo} />
+          <a
+            target="_blank"
+            href="https://novadgt.netlify.app/"
+            className="portfolio-name-wrapper"
             onMouseEnter={() => {
               setIsOpenLogo(true);
             }}
             onMouseLeave={() => {
               setIsOpenLogo(false);
             }}
-            className="portfolio-name"
           >
-            N
-          </p>
-        </a>
+            <p className="portfolio-name">N</p>
+          </a>
+        </div>
       </nav>
     </header>
   );

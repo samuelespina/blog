@@ -1,10 +1,18 @@
 export interface interfaceArticles {
   data: {
-    posts: {
-      nodes: {
-        content: string;
-        title: string;
-      }[];
+    post: {
+      categories: {
+        nodes: {
+          name: string;
+        }[];
+      };
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+        };
+      };
+      title: string;
+      content: string;
     };
   };
   extensions: {
@@ -45,6 +53,7 @@ export interface interfaceSearch {
         node: {
           title: string;
           content: string;
+          id: string;
         };
       }[];
     };
@@ -71,6 +80,7 @@ export interface interfaceCategoryArticles {
         node: {
           title: string;
           content: string;
+          id: string;
         };
       }[];
     };

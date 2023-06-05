@@ -15,80 +15,6 @@ import {
 } from "../../utils";
 
 const HomePage = () => {
-  const [
-    queryResultArticlesDatas,
-    setQueryResultArticlesDatas,
-  ] = useState<interfaceArticles | null>(null);
-  const [
-    queryResultImg,
-    setQueryResultImg,
-  ] = useState<interfaceQueryImg | null>(null);
-  const navigate = useNavigate();
-  const iframe = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: "http://blog-data.local/graphql",
-      data: {
-        query: queryArticles,
-      },
-    }).then((res) => {
-      setQueryResultArticlesDatas(res.data);
-    });
-
-    axios({
-      method: "post",
-      url: "http://blog-data.local/graphql",
-      data: {
-        query: queryImg,
-      },
-    }).then((res) => {
-      setQueryResultImg(res.data);
-    });
-  }, []);
-
-  const renderArticles = () => {
-    const resultArticles = [];
-    for (
-      let i = queryResultArticlesDatas.data.posts.nodes.length - 1;
-      i > -1;
-      i--
-    ) {
-      resultArticles.push(
-        <section
-          onClick={() => {
-            navigate("/article/" + i);
-          }}
-          className="article"
-        >
-          <article>
-            <img
-              src={
-                queryResultImg.data.posts.nodes[i].featuredImage.node.sourceUrl
-              }
-              alt=""
-            />
-          </article>
-          <article>
-            <div className="title">
-              <h1>{queryResultArticlesDatas.data.posts.nodes[i].title}</h1>
-            </div>
-          </article>
-          <article>
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{
-                __html: queryResultArticlesDatas.data.posts.nodes[i].content,
-              }}
-            ></div>
-          </article>
-        </section>
-      );
-    }
-    return resultArticles;
-  };
-
   return (
     <div className="homepage">
       <section className="homepage-part-one">
@@ -133,7 +59,11 @@ const HomePage = () => {
             </div>
           </Carousel>
           <h2 className="destination-title">Destinazioni disponibili</h2>
-          <img src="./images/mappa-miprendoemiportovia.png" alt="" />
+          <img
+            className="destination-img"
+            src="./images/mappa-miprendoemiportovia.png"
+            alt=""
+          />
           <p className="destinations-description">
             Per saperne di più clicca sulle icone{" "}
             <strong>qui a sinistra!</strong>{" "}

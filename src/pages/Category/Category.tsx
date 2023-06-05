@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import {
   interfaceCategoryArticles,
   interfaceQueryImg,
   queryImg,
 } from "../../utils";
+import { Spinner } from "../../components";
 
 const Category = () => {
   const [
@@ -14,11 +15,12 @@ const Category = () => {
   ] = useState<interfaceCategoryArticles | null>(null);
   const { id } = useParams();
   const pathname = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://blog-data.local/graphql",
+      url: "https://dev-blog-wp.pantheonsite.io/graphql",
       data: {
         query: `query{
             posts(where: {categoryName:"${id}"}) {
@@ -33,6 +35,7 @@ const Category = () => {
                 node {
                   title
                   content
+                  id
                 }
               }
             }
@@ -48,9 +51,17 @@ const Category = () => {
 
     for (let i = categoryArticles.data.posts.edges.length - 1; i > -1; i--) {
       result.push(
-        <section className="article">
+        <section
+          onClick={() => {
+            navigate(
+              "/article/" + categoryArticles.data.posts.edges[i].node.id
+            );
+          }}
+          className="article"
+        >
           <article>
             <div className="article-img-wrapper">
+              <Spinner />
               <img
                 className="article-img"
                 src={
@@ -80,10 +91,12 @@ const Category = () => {
   };
 
   return (
-    <div className="article-page-container">
-      <div className="article-wrapper">
-        {categoryArticles ? renderCategoryArticles() : ""}
-      </div>
+    <div className="article-page-container-category">
+      {categoryArticles ? (
+        <div className="article-wrapper">{renderCategoryArticles()}</div>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

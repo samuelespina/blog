@@ -16,8 +16,10 @@
   font-size: 0.7rem;
   text-align: center;
   width: fit-content;
+  white-space: nowrap;
   padding: 0.3rem 0.8rem;
   z-index: 100;
+  user-select: none;
 
   &.active {
     opacity: 1;

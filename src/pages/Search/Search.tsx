@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { interfaceSearch } from "../../utils";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { Spinner } from "../../components";
 
 const Search = () => {
   const [searchResult, setSearchResult] = useState<interfaceSearch | null>(
@@ -10,11 +11,12 @@ const Search = () => {
   const { id } = useParams();
 
   const pathname = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://blog-data.local/graphql",
+      url: "https://dev-blog-wp.pantheonsite.io/graphql",
       data: {
         query: `query{
           posts(where: {search:"${id}"}) {
@@ -29,6 +31,7 @@ const Search = () => {
               node {
                 title
                 content
+                id
               }
             }
           }
@@ -44,8 +47,14 @@ const Search = () => {
 
     for (let i = searchResult.data.posts.edges.length - 1; i > -1; i--) {
       result.push(
-        <section className="article">
+        <section
+          onClick={() => {
+            navigate("/article/" + searchResult.data.posts.edges[i].node.id);
+          }}
+          className="article"
+        >
           <div className="article-img-wrapper">
+            <Spinner />
             <img
               className="article-img"
               src={
@@ -72,7 +81,13 @@ const Search = () => {
   };
 
   return (
-    <div className="search-wrapper">{searchResult ? renderSearch() : ""}</div>
+    <div className="article-page-container-search">
+      {searchResult ? (
+        <div className="article-wrapper">{renderSearch()}</div>
+      ) : (
+        <Spinner />
+      )}
+    </div>
   );
 };
 
