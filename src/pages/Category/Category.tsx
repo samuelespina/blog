@@ -54,15 +54,18 @@ const Category = () => {
   }, [pathname]);
 
   useEffect(() => {
-    startPointPagination <= 1
-      ? backwardRef.current.classList.add("no-content")
-      : backwardRef.current.classList.remove("no-content");
-
-    categoryArticles
-      ? endPointPagination >= categoryArticles.data.posts.edges.length + 1
-        ? forwardRef.current.classList.add("no-content")
-        : forwardRef.current.classList.remove("no-content")
-      : forwardRef.current.classList.remove("no-content");
+    if (backwardRef.current) {
+      startPointPagination <= 1
+        ? backwardRef.current.classList.add("no-content")
+        : backwardRef.current.classList.remove("no-content");
+    }
+    if (forwardRef.current) {
+      categoryArticles
+        ? endPointPagination >= categoryArticles.data.posts.edges.length + 1
+          ? forwardRef.current.classList.add("no-content")
+          : forwardRef.current.classList.remove("no-content")
+        : forwardRef.current.classList.remove("no-content");
+    }
   }, [
     startPointPagination,
     endPointPagination,
@@ -138,34 +141,32 @@ const Category = () => {
   return (
     <div className="article-page-container-category">
       {categoryArticles ? (
-        <div className="article-wrapper" ref={categorySlice}>
-          {renderCategoryArticles()}
-        </div>
+        <>
+          <div className="article-wrapper" ref={categorySlice}>
+            {renderCategoryArticles()}
+          </div>
+          <button
+            className="backward"
+            ref={backwardRef}
+            onClick={() => {
+              backward();
+            }}
+          >
+            indietro
+          </button>
+          <button
+            className="forward"
+            ref={forwardRef}
+            onClick={() => {
+              forward();
+            }}
+          >
+            avanti
+          </button>
+        </>
       ) : (
         <Spinner />
       )}
-      <button
-        className="backward"
-        ref={backwardRef}
-        onClick={() => {
-          backward();
-          categorySlice.current.classList.remove("left-slice");
-          categorySlice.current.classList.add("right-slice");
-        }}
-      >
-        indietro
-      </button>
-      <button
-        className="forward"
-        ref={forwardRef}
-        onClick={() => {
-          forward();
-          categorySlice.current.classList.remove("right-slice");
-          categorySlice.current.classList.add("left-slice");
-        }}
-      >
-        avanti
-      </button>
     </div>
   );
 };

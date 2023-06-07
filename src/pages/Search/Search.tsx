@@ -19,7 +19,7 @@ const Search = () => {
       url: "https://dev-blog-wp.pantheonsite.io/graphql",
       data: {
         query: `query{
-          posts(where: {search:"${id}"}) {
+          posts(where: {search:"${id.replace("-", " ")}"}) {
             nodes {
               featuredImage {
                 node {

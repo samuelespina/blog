@@ -225,7 +225,8 @@ const Navbar = () => {
               type="text"
               placeholder="cosa vuoi cercare?"
               onChange={(e) => {
-                setInputValue(e.target.value);
+                let searchInputPath = e.target.value.replace(" ", "-");
+                setInputValue(searchInputPath);
               }}
               onKeyDown={(e) => {
                 e.keyCode == 13 && navigate("/search/" + inputValue);
