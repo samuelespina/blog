@@ -63,6 +63,8 @@ const Navbar = () => {
 
   const [darkModeState, setDarkModeState] = useState<string>("off");
 
+  const [firstClickHomeFlag, setFirstClickHomeFlag] = useState<number>(0);
+
   const isOpenSetArray = [
     setIsOpenTwo,
     setIsOpenThree,
@@ -129,6 +131,7 @@ const Navbar = () => {
                 switchIconAnimation.current.classList.remove("active");
               iconsRef[i].current.classList.add("active");
               setSwitchIconAnimation(iconsRef[i]);
+              setFirstClickHomeFlag(1);
             }}
             icon={icons[i]}
           />
@@ -140,6 +143,21 @@ const Navbar = () => {
 
     return resultCategories;
   };
+
+  const firstClickBlock = () => {
+    if (firstClickHomeFlag > 0) {
+      if (switchIconAnimation) {
+        switchIconAnimation.current.classList.remove("active");
+        iconAnimation.current.classList.add("active");
+        setSwitchIconAnimation(iconAnimation);
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log(firstClickHomeFlag);
+  }, [firstClickHomeFlag]);
+
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
@@ -181,11 +199,8 @@ const Navbar = () => {
               className="home"
               icon={faHouse}
               onClick={() => {
+                firstClickBlock();
                 navigate("/");
-                switchIconAnimation &&
-                  switchIconAnimation.current.classList.remove("active");
-                iconAnimation.current.classList.add("active");
-                setSwitchIconAnimation(iconAnimation);
               }}
             />
             <ToolTip text="Home" isOpen={isOpenOne} />
@@ -197,6 +212,8 @@ const Navbar = () => {
         <div className="search-section">
           <FontAwesomeIcon
             onClick={() => {
+              switchIconAnimation &&
+                switchIconAnimation.current.classList.remove("active");
               switchInput.current.classList.toggle("active");
             }}
             className="icon"
