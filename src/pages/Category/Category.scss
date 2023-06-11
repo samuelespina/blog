@@ -1,11 +1,4 @@
 .article-page-container-category {
-  .article-wrapper {
-    column-gap: 6rem;
-    row-gap: 2rem;
-  }
-}
-
-.article-page-container-category {
   position: relative;
   padding-left: 5rem;
   width: 100%;
@@ -19,6 +12,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
+    width: 100%;
 
     .article {
       cursor: pointer;
@@ -89,9 +83,14 @@
   .backward,
   .forward {
     position: absolute;
-    border-radius: 1rem;
-    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1rem;
     font-size: 1rem;
+    width: 2rem;
+    aspect-ratio: 1/1;
     -webkit-box-shadow: 0px 0px 15px -6px #000000;
     box-shadow: 0px 0px 15px -6px #000000;
     transition: all 0.3s ease-in-out;
@@ -117,10 +116,85 @@
 
     &:hover {
       background-color: rgb(70, 70, 255);
-      transform: translateY(-0.5rem);
+      transform: translateY(-0.3rem);
       color: white;
       -webkit-box-shadow: 0px 0px 20px -6px #ffffff;
       box-shadow: 0px 0px 20px -6px #ffffff;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-page-container-category {
+    .article-wrapper {
+      flex-direction: column;
+    }
+    .backward,
+    .forward {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .article-page-container-category {
+    .article-wrapper {
+      justify-content: center;
+      .article {
+        scale: 0.85;
+
+        &:hover {
+          scale: 0.87;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .article-page-container-category {
+    padding-left: 4rem;
+    .article-wrapper {
+      justify-content: center;
+      align-items: center;
+      .article {
+        scale: 0.75;
+        margin: -2rem;
+
+        &:hover {
+          scale: 0.77;
+        }
+      }
+    }
+    .backward {
+      left: 1rem;
+      bottom: 1rem;
+      margin-left: 4rem;
+    }
+    .forward {
+      right: 1rem;
+      bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .article-page-container-category {
+    .article-wrapper {
+      .article {
+        scale: 0.7;
+        margin: -2.5rem;
+
+        &:hover {
+          scale: 0.72;
+        }
+      }
+    }
+    .backward {
+      left: 1rem;
+      bottom: 1rem;
+      margin-left: 3rem;
     }
   }
 }

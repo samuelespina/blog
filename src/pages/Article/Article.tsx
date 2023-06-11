@@ -7,6 +7,7 @@ import {
   queryArticles,
 } from "../../utils";
 import { Spinner } from "../../components";
+import AOS from "aos";
 
 const Article = () => {
   const { id } = useParams();
@@ -20,6 +21,14 @@ const Article = () => {
   const [related, setRelated] = useState<interfaceCategoryArticles | null>(
     null
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   useEffect(() => {
     axios({
@@ -149,11 +158,14 @@ const Article = () => {
   return (
     <>
       <section className="article-page-wrapper">
-        <div className="ticket">Buy ticket</div>
+        <div className="ticket">
+          <p> Buy ticket</p>
+        </div>
         <article className="article-clicked">
           {queryResultArticlesDatas ? renderArticlePage() : <Spinner />}
         </article>
-        <article className="related-wrapper">
+        <section className="related-wrapper">
+          {" "}
           <h2 className="related-title">
             Risultati correlati a :
             <i>
@@ -163,10 +175,12 @@ const Article = () => {
                 : ""}
             </i>
           </h2>
-          <article className="related">
-            {related ? renderRelated() : ""}
-          </article>
-        </article>
+          <div className="related-article-wrapper">
+            <article className="related">
+              {related ? renderRelated() : ""}
+            </article>
+          </div>
+        </section>
       </section>
     </>
   );

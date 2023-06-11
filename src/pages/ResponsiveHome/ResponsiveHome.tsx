@@ -1,41 +1,32 @@
-import React, { useState, useEffect, useRef } from "react";
-import Marquee from "react-fast-marquee";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {
-  queryArticles,
-  queryCategories,
-  interfaceArticles,
-  interfaceCategoriesNames,
-  queryImg,
-  interfaceQueryImg,
-} from "../../utils";
+import AOS from "aos";
 
-const HomePage = () => {
+const ResponsiveHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="homepage">
+    <div className="responsive-homepage">
       <section className="homepage-part-one">
-        <div className="page-title">
-          <p>Chi siamo?</p>
-        </div>
         <section className="homepage-part-one-content">
           <h1 className="site-name">Travelly</h1>
+          <div className="site-description">
+            <p>
+              Travelly nasce con l’idea di coniugare un modo di viaggiare in
+              maniera responsabile con l'esigenza di realizzare un viaggio su
+              misura per le esigenze delle singole persone...
+              <p>
+                <strong>Dove vuoi, quando vuoi!</strong>
+              </p>
+            </p>
+          </div>
 
-          <p>
-            Travelly nasce con l’idea di coniugare un modo di viaggiare in
-            maniera responsabile con l'esigenza di realizzare un viaggio su
-            misura per le esigenze delle singole persone...
-          </p>
-
-          <p>
-            <strong>Dove vuoi, quando vuoi!</strong>
-          </p>
           <Carousel
             className="carousel"
             autoPlay={true}
@@ -75,10 +66,113 @@ const HomePage = () => {
         </section>
       </section>
 
+      <section className="homepage-part-three">
+        <h2 className="page-title">Viaggi più popolari</h2>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/quando-andare-zanzibar-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">Quando andiamo a Zanzibar </h3>
+            <p>Africa</p>
+            <p> 26 gennaio 2023</p>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/key-west-immagine-copertina-2-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">
+              Guida di Key West Florida: dove gli USA diventano Caraibi!
+            </h3>
+            <p>Americhe </p>
+            <p>10 gennaio 2022</p>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/viaggiare-sicuri-indonesia-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">
+              Indonesia: come viaggiare sicuri
+            </h3>
+            <p>Asia </p>
+            <p>20 Gennaio 2023 </p>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/On-the-road-in-Europa-Copertina-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">
+              3 viaggi da fare on the road in Europa
+            </h3>
+            <p>Europa</p>
+            <p>30 Marzo 2023</p>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/Val-dEga-Copertina-300x169.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">
+              Weekend in Val d’Ega: vacanza in montagna perfetta anche senza
+              sciare!
+            </h3>
+            <p>Italia</p>
+            <p>24 Febbraio 2023</p>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="description-homepage-wrapper">
+          <div className="img-wrapper-two">
+            <img
+              className="img-two"
+              src="./images/copertina-1-300x200.jpg"
+              alt=""
+            />
+          </div>
+          <div className="description-homepage">
+            <h3 className="description-title">
+              Viaggio in Australia: 3 hotel di lusso da Perth alla Clare Valley
+            </h3>
+            <p>Oceania</p>
+            <p>3 Dicembre 2019</p>
+          </div>
+        </section>
+      </section>
+
       <section className="homepage-part-two">
-        <div className="page-title">
-          <p>Vivere in viaggio</p>
-        </div>
+        <h1 className="page-title">Vivere in viaggio</h1>
 
         <section className="description-homepage-wrapper">
           <div className="img-wrapper-one">
@@ -90,9 +184,9 @@ const HomePage = () => {
           </div>
           <div className="description-homepage">
             {" "}
-            <h1 className="description-title">
+            <h2 className="description-title">
               Guadagnare con un blog di viaggi
-            </h1>
+            </h2>
             <p>
               Ami viaggiare più di ogni altra cosa ma soldi e tempo sono gli
               ostacoli contro cui combatti ogni giorno.{" "}
@@ -121,7 +215,7 @@ const HomePage = () => {
             />
           </div>
           <div className="description-homepage">
-            <h1 className="description-title"> Travel blogger school</h1>
+            <h2 className="description-title"> Travel blogger school</h2>
             <p>
               Il primo percorso step by step che ti insegnerà come vivere
               viaggiando, diventare un travel blogger di successo e guadagnare
@@ -150,7 +244,7 @@ const HomePage = () => {
           ></iframe>
 
           <div className="description-homepage">
-            <h1 className="description-title"> Vivere Viaggiando</h1>
+            <h2 className="description-title"> Vivere Viaggiando</h2>
             <p>
               È un mini-corso, completamente gratuito, per muovere i primi passi
               nel mondo del travel blogging.
@@ -182,113 +276,8 @@ const HomePage = () => {
           </div>
         </section>
       </section>
-      <section className="homepage-part-three">
-        <div className="page-title">
-          <p>Viaggi più popolari</p>
-        </div>
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/quando-andare-zanzibar-300x169.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">Quando andiamo a Zanzibar </h1>
-            <p>Africa</p>
-            <p> 26 gennaio 2023</p>
-          </div>
-        </section>
-
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/key-west-immagine-copertina-2-300x169.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">
-              Guida di Key West Florida: dove gli USA diventano Caraibi!
-            </h1>
-            <p>Americhe </p>
-            <p>10 gennaio 2022</p>
-          </div>
-        </section>
-
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/viaggiare-sicuri-indonesia-300x169.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">
-              Indonesia: come viaggiare sicuri
-            </h1>
-            <p>Asia </p>
-            <p>20 Gennaio 2023 </p>
-          </div>
-        </section>
-
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/On-the-road-in-Europa-Copertina-300x169.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">
-              3 viaggi da fare on the road in Europa
-            </h1>
-            <p>Europa</p>
-            <p>30 Marzo 2023</p>
-          </div>
-        </section>
-
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/Val-dEga-Copertina-300x169.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">
-              Weekend in Val d’Ega: vacanza in montagna perfetta anche senza
-              sciare!
-            </h1>
-            <p>Italia</p>
-            <p>24 Febbraio 2023</p>
-          </div>
-        </section>
-
-        <section className="description-homepage-wrapper">
-          <div className="img-wrapper-two">
-            <img
-              className="img-two"
-              src="./images/copertina-1-300x200.jpg"
-              alt=""
-            />
-          </div>
-          <div className="description-homepage">
-            <h1 className="description-title">
-              Viaggio in Australia: 3 hotel di lusso da Perth alla Clare Valley
-            </h1>
-            <p>Oceania</p>
-            <p>3 Dicembre 2019</p>
-          </div>
-        </section>
-      </section>
     </div>
   );
 };
 
-export default HomePage;
+export default ResponsiveHome;

@@ -7,8 +7,22 @@ import {
   queryImg,
 } from "../../utils";
 import { Spinner } from "../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Category = () => {
+  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    console.log(screenWidth);
+  }, [screenWidth]);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setScreenWidth(window.innerWidth);
+    });
+  }, []);
+
   const [
     categoryArticles,
     setCategoryArticles,
@@ -21,6 +35,10 @@ const Category = () => {
   const forwardRef = useRef<HTMLInputElement | null>(null);
   const backwardRef = useRef<HTMLInputElement | null>(null);
   const categorySlice = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   useEffect(() => {
     axios({
@@ -121,9 +139,9 @@ const Category = () => {
             </div>
           </article>
           <article className="article-description">
-            <h1 className="title">
+            <h2 className="title">
               {JSON.stringify(categoryArticles.data.posts.edges[i].node.title)}
-            </h1>
+            </h2>
             <div
               className="content"
               dangerouslySetInnerHTML={{
@@ -150,18 +168,28 @@ const Category = () => {
             ref={backwardRef}
             onClick={() => {
               backward();
+              screenWidth < 769 &&
+                setTimeout(() => {
+                  window.scrollTo(0, 100000);
+                }, 100);
             }}
           >
-            indietro
+            <FontAwesomeIcon icon={faAngleLeft} />
           </button>
           <button
             className="forward"
             ref={forwardRef}
             onClick={() => {
               forward();
+              console.log("dio");
+
+              screenWidth < 769 &&
+                setTimeout(() => {
+                  window.scrollTo(0, 100000);
+                }, 100);
             }}
           >
-            avanti
+            <FontAwesomeIcon icon={faAngleLeft} flip={"horizontal"} />
           </button>
         </>
       ) : (

@@ -1,0 +1,200 @@
+.responsive-homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5.5rem;
+  scrollbar-color: rgb(241, 241, 241) rgb(241, 241, 241);
+  height: 100%;
+  width: 100%;
+
+  .homepage-part-two,
+  .homepage-part-three {
+    .page-title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 3rem;
+    }
+  }
+
+  .homepage-part-one {
+    .homepage-part-one-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .site-name,
+      p {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      .site-name {
+        font-size: 2.3rem;
+        margin-bottom: 2rem;
+        margin-top: 0.7rem;
+      }
+      .site-description {
+        padding-right: 0.1rem;
+      }
+      .carousel {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        width: 70%;
+        border-radius: 1.5rem;
+        margin-right: 0.5rem;
+      }
+      .destination-title {
+        margin-bottom: 3rem;
+      }
+
+      .destination-img {
+        width: 90%;
+        border-radius: 2rem;
+      }
+
+      .destinations-description {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .homepage-part-two {
+    .description-homepage-wrapper {
+      margin-bottom: 2rem;
+      .iframe {
+        z-index: 0;
+        border: none;
+        border-radius: 1rem;
+        position: relative;
+        top: -0.5rem;
+        width: 85%;
+        height: 13rem;
+      }
+    }
+  }
+  .homepage-part-three {
+    .description-homepage-wrapper {
+      .description-homepage {
+        text-align: center;
+      }
+    }
+  }
+
+  .homepage-part-two,
+  .homepage-part-three {
+    margin-right: 0.5rem;
+    .description-homepage-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &:first-of-type {
+        margin-top: 1rem;
+      }
+
+      .img-wrapper-one {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 1rem;
+        margin-top: 1rem;
+        width: 95%;
+
+        .img-one {
+        }
+      }
+      .img-wrapper-two {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 2rem;
+        position: relative;
+        top: 1rem;
+        .img-two {
+        }
+      }
+
+      .description-homepage {
+        width: 80%;
+        border-radius: 2rem;
+        background-color: white;
+        padding: 1.5rem;
+        position: relative;
+        top: -1rem;
+        -webkit-box-shadow: 0px 0px 10px -6px #000000;
+        box-shadow: 0px 0px 10px -6px #000000;
+        transition: all 0.3s ease-in-out;
+        line-height: 1.8rem;
+        .description-title {
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .responsive-homepage {
+    font-size: 0.9rem;
+    padding-left: 4.5rem;
+    .homepage-part-one {
+      .homepage-part-one-content {
+        .site-name {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .homepage-part-three {
+      .description-homepage-wrapper {
+        scale: 0.85;
+        margin: -1.5rem 0;
+      }
+    }
+
+    .homepage-part-two,
+    .homepage-part-three {
+      .description-homepage-wrapper {
+        .description-homepage {
+          line-height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .responsive-homepage {
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+    .homepage-part-one {
+      .homepage-part-one-content {
+        .site-name {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .homepage-part-three {
+      .description-homepage-wrapper {
+        scale: 0.85;
+        margin: -2rem 0;
+      }
+    }
+
+    .homepage-part-two,
+    .homepage-part-three {
+      .description-homepage-wrapper {
+        .description-homepage {
+          line-height: 1.5rem;
+        }
+      }
+    }
+  }
+}

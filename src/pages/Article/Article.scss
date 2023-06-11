@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 
   .ticket {
     position: absolute;
@@ -71,75 +72,215 @@
       }
     }
   }
-
   .related-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     -webkit-box-shadow: 0px 0px 20px -6px #000000;
     box-shadow: 0px 0px 20px -6px #000000;
     width: 100%;
     height: 100%;
     border-radius: 3rem;
-    overflow-y: hidden;
     .related-title {
       width: 100%;
       text-align: left;
       margin-left: 5rem;
       padding: 2rem;
     }
+    .related-article-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .related {
-      width: 80%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      grid-template-rows: repeat(2, auto);
-      .article {
-        cursor: pointer;
+      .related {
         margin: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        position: relative;
-        transition: all 0.1s ease-in-out;
-        .article-img-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          border-radius: 2rem;
-          position: relative;
-          top: 1rem;
-          .article-img {
-          }
-        }
-        .article-description {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        overflow-y: hidden;
+        .article {
+          cursor: pointer;
+          margin: 0 auto;
+          margin: 2rem;
           display: flex;
           flex-direction: column;
-          justify-content: space-evenly;
+          justify-content: flex-start;
           align-items: center;
-          width: 17rem;
-          height: auto;
-          border-radius: 2rem;
-          background-color: white;
-          font-size: 1rem;
-          padding: 1rem;
           position: relative;
-          top: -1rem;
-          -webkit-box-shadow: 0px 0px 10px -6px #000000;
-          box-shadow: 0px 0px 10px -6px #000000;
-          transition: all 0.3s ease-in-out;
-          .title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+          transition: all 0.1s ease-in-out;
+          .article-img-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 2rem;
+            position: relative;
+            top: 1rem;
+            .article-img {
+            }
           }
-          .content {
-            text-align: center;
-            line-height: 2rem;
+          .article-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 17rem;
+            height: auto;
+            border-radius: 2rem;
+            background-color: white;
+            font-size: 1rem;
+            padding: 1rem;
+            position: relative;
+            top: -1rem;
+            -webkit-box-shadow: 0px 0px 10px -6px #000000;
+            box-shadow: 0px 0px 10px -6px #000000;
+            transition: all 0.3s ease-in-out;
+            .title {
+              text-align: center;
+              margin-bottom: 1.5rem;
+              font-size: 1.1rem;
+            }
+            .content {
+              text-align: center;
+              line-height: 2rem;
+            }
+          }
+          &:hover {
+            scale: 1.02;
           }
         }
-        &:hover {
-          scale: 1.02;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-page-wrapper {
+    .article-clicked {
+      .article {
+        scale: 0.8;
+      }
+    }
+    .related-wrapper {
+      .related-article-wrapper {
+        .related {
+          grid-template-columns: repeat(2, auto);
+          .article {
+            scale: 0.8;
+            &:hover {
+              scale: 0.82;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .article-page-wrapper {
+    .article-clicked {
+      .article {
+        scale: 0.7;
+      }
+    }
+    .related-wrapper {
+      .related-article-wrapper {
+        .related {
+          width: 100%;
+          grid-template-columns: repeat(2, 15rem);
+          .article {
+            margin: 0;
+            scale: 0.7;
+            &:hover {
+              scale: 0.72;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .article-page-wrapper {
+    padding-left: 4rem;
+    .ticket {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .article-clicked {
+      .article {
+        scale: 0.55;
+      }
+    }
+    .related-wrapper {
+      .related-title {
+        margin-left: 0;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .related-article-wrapper {
+        .related {
+          width: 100%;
+          grid-template-columns: repeat(2, 9.5rem);
+          .article {
+            .article-img-wrapper {
+              width: 13rem;
+            }
+            margin: 0;
+            scale: 0.7;
+            margin: -2.5rem 0;
+            .article-description {
+              width: 12rem;
+            }
+            &:hover {
+              scale: 0.72;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .article-page-wrapper {
+    .article-clicked {
+      .article {
+        scale: 0.5;
+        .article-description {
+          .title,
+          .content {
+            scale: 1.1;
+          }
+        }
+      }
+    }
+    .related-wrapper {
+      .related-title {
+        font-size: 1rem;
+      }
+      .related-article-wrapper {
+        .related {
+          width: 100%;
+          grid-template-columns: repeat(2, 9rem);
+          .article {
+            .article-img-wrapper {
+              width: 13rem;
+            }
+            margin: 0;
+            scale: 0.6;
+            margin: -3.5rem 0;
+            .article-description {
+              width: 12rem;
+            }
+            &:hover {
+              scale: 0.62;
+            }
+          }
         }
       }
     }

@@ -5,6 +5,7 @@
   font-family: "Roboto", sans-serif;
   scrollbar-width: thin;
   letter-spacing: 0.5px;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -26,16 +27,11 @@ body {
     .navbar-wrapper {
       -webkit-box-shadow: 0px 0px 25px -8px #393939;
       box-shadow: 0px 0px 25px -8px #393939;
-      background-color: rgb(0, 0, 184);
-
-      .navbar {
-        .logo {
-          color: white;
-        }
-      }
+      background-color: #0000b8;
     }
 
-    .homepage {
+    .homepage,
+    .responsive-homepage {
       .homepage-part-one,
       .homepage-part-two,
       .homepage-part-three {
@@ -61,6 +57,17 @@ body {
             -webkit-box-shadow: 0px 0px 20px -8px #393939;
             box-shadow: 0px 0px 20px -8px #393939;
           }
+        }
+      }
+    }
+
+    .responsive-homepage {
+      .homepage-part-two,
+      .homepage-part-three {
+        .page-title {
+          background-color: rgb(22, 22, 22);
+          -webkit-box-shadow: none;
+          box-shadow: none;
         }
       }
     }
@@ -157,4 +164,12 @@ html,
 body {
   min-height: 100vh;
   overflow-x: hidden;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
 }

@@ -161,7 +161,9 @@ const Navbar = () => {
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        <p className="logo">Travelly</p>
+        <div className="logo">
+          <p>T</p>{" "}
+        </div>
 
         <div className="darkmode-switch-button-wrapper">
           <ToolTip
